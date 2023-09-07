@@ -19,12 +19,14 @@ app.get("/api", (req, res, next) => {
 
     const day = new Date();
 
+    const withoutMs = day.toISOString().split('.')[0] + 'Z';
+
 return res.status(200).json({
     slack_name: slack_name,
 
     current_day: daysOfTheWeek[day.getDay()],
 
-    utc_time: day,
+    utc_time: withoutMs,
 
     track: track,
 
